@@ -4,28 +4,29 @@ import game.Game;
 import game.Tower;
 
 public class App {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         int opt;
         int disksNumber = 0;
 
         do {
-            System.out.println("1 - Jogar\n2 - Desafiar Bot\n3 - Configurar Número de Discos\n4 - Sair");
-            System.out.print("Opção: ");
+            System.out.println("1 - Play\n2 - Challenge Bot\n3 - Configure disks number\n4 - Exit");
+            System.out.print("Options: ");
             opt = sc.nextInt();
 
             switch (opt) {
                 case 1:
                     if (disksNumber == 0) {
-                        System.err.println("Configure o número de discos na opção 3!");
+                        System.err.println("Configure disks number in the option 3!");
                         break;
                     }
                     play(disksNumber, sc);
+                    break;
                 case 2:
                     break;
                 case 3:
-                    System.out.print("Insira o número de discos: ");
+                    System.out.print("Insert the number of disks: ");
                     disksNumber = sc.nextInt();
                 default:
                     break;
@@ -43,26 +44,26 @@ public class App {
             System.out.println("-----------");
             g.see();
             System.out.println("-----------");
-            System.out.println("Faça seu movimento:\n1 - mover\n2 - ajuda\n3 - sair");
-            System.out.print("Opção: ");
+            System.out.println("Make your movement:\n1 - move\n2 - help\n3 - leave");
+            System.out.print("Option: ");
             opt = sc.nextInt();
 
             switch (opt) {
                 case 1:
-                    System.out.print("Origem: ");
+                    System.out.print("Origin: ");
                     int origem = sc.nextInt();
-                    System.out.print("Destino: ");
+                    System.out.print("Destination: ");
                     int destino = sc.nextInt();
 
                     g.move(Tower.values()[origem - 1], Tower.values()[destino - 1]);
                     break;
                 case 2:
-                    System.out.println("COMO JOGAR?");
-                    System.out.println("REGRA 1: Você só pode mover o disco que esta no topo.\nREGRA 2: O destino ao qual o disco será colocado não deve conter um disco de menor valor no topo.");
-                    System.out.println("OBS: A origem é a torre da qual você deseja retirar o disco, o destino aonde voce ira colocar este disco.");
+                    System.out.println("HOW TO PLAY?");
+                    System.out.println("RULE 1: You can only move the disk that is on top.\nRULE 2: The destination where the disk will be placed must not contain a disk of lesser value on top.");
+                    System.out.println("NOTE: The source is the tower from which you want to remove the disk, the destination is where you will place this disk.");
                     break;
                 case 3:
-                    System.out.println("Saindo...");
+                    System.out.println("Leaving...");
                 default:
                     break;
             }
@@ -70,7 +71,7 @@ public class App {
 
         if (g.isGameFinished()) {
             System.out.println("---------------------------------");
-            System.out.println("Parabéns, você concluiu o desafio!");
+            System.out.println("Congratulations, you win the challenge!");
             System.out.println("---------------------------------");
         }
     }
